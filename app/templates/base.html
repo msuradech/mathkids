@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MathKids</title>
+    <style>
+        body { display: flex; font-family: Arial; }
+        .sidebar { width: 200px; background: #f4f4f4; padding: 20px; }
+        .content { flex: 1; padding: 20px; }
+        .question { margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h3>Level 1</h3>
+        <ul>
+            <li><a href="/quiz/easy">Easy</a></li>
+            <li><a href="/quiz/normal">Normal</a></li>
+            <li><a href="/quiz/hard">Hard</a></li>
+        </ul>
+    </div>
+
+    <div class="content">
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>
