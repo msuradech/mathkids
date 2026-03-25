@@ -10,8 +10,12 @@ function submitQuiz() {
         if (userAnswer === correctAnswer) {
             correct++;
             resultSpan.innerText = " ✔";
+            resultSpan.classList.add("correct");
+            resultSpan.classList.remove("wrong");
         } else {
             resultSpan.innerText = ` ✘ (Ans: ${correctAnswer})`;
+            resultSpan.classList.add("wrong");
+            resultSpan.classList.remove("correct");
         }
     });
 
