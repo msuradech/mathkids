@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>MathKids Quiz</h2>
+
+{% if questions %}
+<form id="quiz-form">
+    {% for q in questions %}
+        <div class="question">
+            <label>{{ loop.index }}. {{ q.question }} = </label>
+            <input type="text" name="q{{ loop.index }}" data-answer="{{ q.answer }}">
+            <span class="result"></span>
+        </div>
+    {% endfor %}
+
+    <button type="button" onclick="submitQuiz()">Submit</button>
+</form>
+
+<p id="score"></p>
+{% else %}
+<p>Select a level to start</p>
+{% endif %}
+
+<script src="/static/app.js"></script>
+{% endblock %}
