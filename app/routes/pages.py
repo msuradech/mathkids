@@ -2,10 +2,11 @@ from fastapi import APIRouter, Request
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 from pydantic import BaseModel
-from app.services.quiz_service import generate_questions, get_mode_config
+from services.quiz_service import generate_questions, get_mode_config
+from db.oci import get_connection
 
 router = APIRouter()
-templates = Jinja2Templates(directory="app/templates")
+templates = Jinja2Templates(directory="templates")
 
 class QuizResult(BaseModel):
     level: str
@@ -45,3 +46,26 @@ def quiz(request: Request, mode: str):
         "mode": mode
     }
 )
+
+@router.get("/test-db")
+def test_db():
+    try:
+        conn = get_connection()
+        cursor = conn.cursor()
+
+        cursor.execute("SELECT SYSDATE FROM dual")
+        result = cursor.fetchone()
+
+        cursor.close()
+        conn.close()
+
+        return {
+            "status": "success",
+            "sysdate": str(result[0])
+        }
+
+    except Exception as e:
+        return {
+            "status": "error",
+            "message": str(e)
+        }
