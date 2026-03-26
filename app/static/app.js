@@ -36,8 +36,8 @@ function sendResultToAPI(data) {
 }
 
 function getQuizLevel() {
-    const path = window.location.pathname;
-    return path.split("/").pop(); // เช่น easy, normal, hard
+    const pathParts = window.location.pathname.split("/");
+    return pathParts[2]; // index 2 = "01"
 }
 
 function submitQuiz() {
