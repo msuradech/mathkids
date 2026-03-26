@@ -40,18 +40,28 @@ function getQuizLevel() {
     return pathParts[2]; // index 2 = "01"
 }
 
-function submitQuiz() {
-    const totalTime = stopTimer();
-    const inputs = document.querySelectorAll("input");
+function calculateScore(inputs) {
     let correct = 0;
 
+    inputs.forEach(input => {
+        const userAnswer = parseInt(input.value);
+        const correctAnswer = parseInt(input.dataset.answer);
+
+        if (userAnswer === correctAnswer) {
+            correct++;
+        }
+    });
+
+    return correct;
+}
+
+function renderResults(inputs) {
     inputs.forEach(input => {
         const userAnswer = parseInt(input.value);
         const correctAnswer = parseInt(input.dataset.answer);
         const resultSpan = input.nextElementSibling;
 
         if (userAnswer === correctAnswer) {
-            correct++;
             resultSpan.innerText = " ✔";
             resultSpan.classList.add("correct");
             resultSpan.classList.remove("wrong");
@@ -61,6 +71,14 @@ function submitQuiz() {
             resultSpan.classList.remove("correct");
         }
     });
+}
+
+function submitQuiz() {
+    const totalTime = stopTimer();
+    const inputs = document.querySelectorAll("input");
+    
+    const correct = calculateScore(inputs);
+    renderResults(inputs);
 
     const totalQuestions = inputs.length;
     const avgTime = (totalTime / totalQuestions).toFixed(2);
@@ -71,11 +89,10 @@ function submitQuiz() {
         `Total: ${totalTime}s | Avg: ${avgTime}s/question`;
     
     sendResultToAPI({
-        level: getQuizLevel(),   // เดี๋ยวทำต่อด้านล่าง
-        totalQuestions: totalQuestions,
+        quiz_level: getQuizLevel(),   // เดี๋ยวทำต่อด้านล่าง
+        total_questions: totalQuestions,
         score: correct,
-        totalTime: totalTime,
-        avgTime: avgTime
+        total_time_sec: totalTime
     });
 }
 

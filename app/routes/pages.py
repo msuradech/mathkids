@@ -3,17 +3,17 @@ from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 from pydantic import BaseModel
 from services.quiz_service import generate_questions, get_mode_config
+from services.db_service import insert_quiz_result
 from db.oci import get_connection
 
 router = APIRouter()
 templates = Jinja2Templates(directory="templates")
 
 class QuizResult(BaseModel):
-    level: str
-    totalQuestions: int
+    quiz_level: str
+    total_questions: int
     score: int
-    totalTime: int
-    avgTime: float
+    total_time_sec: int
 
 @router.get("/", response_class=HTMLResponse)
 def home(request: Request):
@@ -23,7 +23,7 @@ def home(request: Request):
     context={}
 )
 
-@router.post("/quiz/record")
+@router.post("/quiz/record2")
 def receive_quiz_result(data: QuizResult):
     print("=== Quiz Result ===")
     print(data)
@@ -31,6 +31,20 @@ def receive_quiz_result(data: QuizResult):
     return {
         "status": "ok",
         "message": "received"
+    }
+
+@router.post("/quiz/record")
+def submit_quiz(req: QuizResult):
+    user_id = insert_quiz_result(
+        quiz_level=req.quiz_level,
+        total_questions=req.total_questions,
+        score=req.score,
+        total_time_sec=req.total_time_sec
+    )
+
+    return {
+        "status": "ok",
+        "user_id": user_id
     }
 
 @router.get("/quiz/01/{mode}", response_class=HTMLResponse)
