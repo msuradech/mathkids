@@ -97,5 +97,10 @@ function submitQuiz() {
 }
 
 window.onload = function () {
-    startTimer();
+    const timerEl = document.getElementById("timer");
+
+    if (timerEl) {
+        startTimer();
+    }
+
 };
