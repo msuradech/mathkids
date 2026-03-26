@@ -74,6 +74,10 @@ function renderResults(inputs) {
 }
 
 function submitQuiz() {
+    const btn = document.getElementById("submit-btn");
+    if (btn.disabled) return;
+    btn.disabled = true;
+
     const totalTime = stopTimer();
     const inputs = document.querySelectorAll("input");
     
@@ -94,6 +98,10 @@ function submitQuiz() {
         score: correct,
         total_time_sec: totalTime
     });
+}
+
+function resetQuiz() {
+    location.reload();
 }
 
 window.onload = function () {
