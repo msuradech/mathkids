@@ -14,7 +14,7 @@ def home(request: Request):
     context={}
 )
 
-@router.get("/quiz/{mode}", response_class=HTMLResponse)
+@router.get("/quiz01/{mode}", response_class=HTMLResponse)
 def quiz(request: Request, mode: str):
     total = get_mode_config(mode)
     questions = generate_questions(total)
