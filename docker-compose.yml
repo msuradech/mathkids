@@ -5,6 +5,10 @@ services:
     restart: unless-stopped
     ports:
       - "8002:8000"
+    environment:
+      OCI_USER: ${OCI_USER}
+      OCI_PASSWORD: ${OCI_PASSWORD}
+      WALLET_PASSWORD: ${WALLET_PASSWORD}
     volumes:
       - .:/app
     labels:
