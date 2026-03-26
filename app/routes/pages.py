@@ -23,16 +23,6 @@ def home(request: Request):
     context={}
 )
 
-@router.post("/quiz/record2")
-def receive_quiz_result(data: QuizResult):
-    print("=== Quiz Result ===")
-    print(data)
-
-    return {
-        "status": "ok",
-        "message": "received"
-    }
-
 @router.post("/quiz/record")
 def submit_quiz(req: QuizResult):
     user_id = insert_quiz_result(
