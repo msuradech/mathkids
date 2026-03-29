@@ -11,40 +11,43 @@ body {
 }
 
 .sidebar {
-    width: 200px;
-    background: #1e293b;
-    color: white;
-    padding: 20px;
-    height: 100vh;
+    width: 1ึ0px;
+    background-color: #1e293b;   /* น้ำเงินเทาเข้ม */
+    padding: 12px;
+    border-radius: 8px;
 }
 
+/* Level */
 .sidebar h3 {
-    margin-top: 0;
-    margin-bottom: 15px;
-    font-size: 18px;
+    margin: 0 0 8px 0;
+    font-size: 13px;
+    color: #94a3b8;   /* เทาอ่อน (ไม่แย่งซีน) */
+    font-weight: 500;
 }
 
+/* list */
 .sidebar ul {
     list-style: none;
+    display: flex;
+    gap: 6px;
     padding: 0;
+    margin: 0;
 }
 
-.sidebar li {
-    margin-bottom: 0px;
-}
-
+/* link */
 .sidebar a {
-    color: #cbd5f5;
     text-decoration: none;
-    display: block;
-    padding: 8px 10px;
+    font-size: 12px;
+    color: #e2e8f0;   /* ขาวนวล อ่านง่าย */
+    padding: 4px 8px;
     border-radius: 6px;
-    transition: 0.2s;
+    transition: all 0.2s ease;
 }
 
+/* hover */
 .sidebar a:hover {
-    background: #334155;
-    color: white;
+    background-color: #334155;
+    color: #ffffff;
 }
 
 .content {
