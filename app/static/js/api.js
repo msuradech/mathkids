@@ -1,4 +1,4 @@
-export function sendResultToAPI(data) {
+export function recordResult(data) {
     fetch("/quiz/record", {
         method: "POST",
         headers: {

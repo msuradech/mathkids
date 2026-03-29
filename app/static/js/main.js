@@ -1,6 +1,6 @@
 import { startTimer, stopTimer } from "./timer.js";
 import { calculateScore, renderResults } from "./quiz.js";
-import { sendResultToAPI } from "./api.js";
+import { recordResult } from "./api.js";
 import { getQuizLevel } from "./utils.js";
 
 function submitQuiz() {
@@ -22,7 +22,7 @@ function submitQuiz() {
     document.getElementById("result-time").innerText =
         `Total: ${totalTime}s | Avg: ${avgTime}s/question`;
     
-    sendResultToAPI({
+    recordResult({
         quiz_level: getQuizLevel(),   // เดี๋ยวทำต่อด้านล่าง
         total_questions: totalQuestions,
         score: correct,
