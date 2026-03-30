@@ -8,7 +8,11 @@
     {% for q in questions %}
         <div class="question">
             <label>{{ loop.index }}) {{ q.question }} = </label>
-            <input type="text" name="q{{ loop.index }}" data-answer="{{ q.answer }}">
+            <input 
+                type="text"
+                inputmode="numeric"
+                name="q{{ loop.index }}"
+                data-answer="{{ q.answer }}">
             <span class="result"></span>
         </div>
     {% endfor %}
