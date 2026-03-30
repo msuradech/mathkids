@@ -9,12 +9,6 @@ from db.oci import get_connection
 router = APIRouter()
 templates = Jinja2Templates(directory="templates")
 
-class QuizResult(BaseModel):
-    quiz_level: str
-    total_questions: int
-    score: int
-    total_time_sec: int
-
 @router.get("/", response_class=HTMLResponse)
 def home(request: Request):
     return templates.TemplateResponse(
@@ -22,6 +16,12 @@ def home(request: Request):
     name="index.html",
     context={}
 )
+
+class QuizResult(BaseModel):
+    quiz_level: str
+    total_questions: int
+    score: int
+    total_time_sec: int
 
 @router.post("/quiz/record")
 def submit_quiz(req: QuizResult):
