@@ -29,7 +29,7 @@ def quiz(request: Request, mode: str):
 
     return templates.TemplateResponse(
     request=request,
-    name="index.html",
+    name="quiz.html",
     context={
         "questions": questions,
         "mode": mode
