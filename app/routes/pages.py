@@ -5,6 +5,7 @@ from pydantic import BaseModel
 from services.quiz_service import generate_questions, get_mode_config
 from services.db_service import insert_quiz_result
 from db.oci import get_connection
+from schemas.quiz import QuizResult
 
 router = APIRouter()
 templates = Jinja2Templates(directory="templates")
@@ -24,12 +25,6 @@ def register_page(request: Request):
         name="register.html",
         context={}
     )
-
-class QuizResult(BaseModel):
-    quiz_level: str
-    total_questions: int
-    score: int
-    total_time_sec: int
 
 @router.post("/quiz/record")
 def submit_quiz(req: QuizResult):
