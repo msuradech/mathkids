@@ -1,5 +1,3 @@
-# app/routes/auth.py
-
 from fastapi import APIRouter, Depends
 from schemas.user import RegisterRequest
 from services.auth_service import register_user
