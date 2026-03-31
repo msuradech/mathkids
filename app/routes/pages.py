@@ -17,6 +17,14 @@ def home(request: Request):
     context={}
 )
 
+@router.get("/register", response_class=HTMLResponse)
+def register_page(request: Request):
+    return templates.TemplateResponse(
+        request=request,
+        name="register.html",
+        context={}
+    )
+
 class QuizResult(BaseModel):
     quiz_level: str
     total_questions: int
