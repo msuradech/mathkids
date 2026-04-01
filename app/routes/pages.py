@@ -13,6 +13,14 @@ def home(request: Request):
     context={}
 )
 
+@router.get("/login", response_class=HTMLResponse)
+def register_page(request: Request):
+    return templates.TemplateResponse(
+        request=request,
+        name="login.html",
+        context={}
+    )
+
 @router.get("/quiz", response_class=HTMLResponse)
 def register_page(request: Request):
     return templates.TemplateResponse(

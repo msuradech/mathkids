@@ -1,10 +1,12 @@
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
+from middleware.session import add_session_middleware
 from routes import pages, auth, quiz, utils
 
 
 def create_app():
     app = FastAPI()
+    add_session_middleware(app)
 
     # static files
     app.mount("/static", StaticFiles(directory="static"), name="static")

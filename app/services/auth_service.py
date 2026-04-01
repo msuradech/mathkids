@@ -1,4 +1,4 @@
-from fastapi import HTTPException
+from fastapi import Request, HTTPException
 from datetime import datetime
 from passlib.context import CryptContext
 
@@ -71,3 +71,40 @@ def register_user(data, conn):
     conn.commit()
 
     return {"message": "User registered successfully"}
+
+def login_user(conn, username: str, password: str):
+    cursor = conn.cursor()
+
+    cursor.execute("""
+        SELECT user_id, username, password_hash, role
+        FROM mathkids.users
+        WHERE username = :username
+    """, {"username": username})
+
+    user = cursor.fetchone()
+
+    if not user:
+        return None
+
+    user_id, db_username, db_password_hash, role = user
+
+    if not pwd_context.verify(password, db_password_hash):
+        return None
+
+    return {
+        "id": user_id,
+        "username": db_username,
+        "role": role
+    }
+
+def get_current_user(request: Request):
+    user_id = request.session.get("user_id")
+    role = request.session.get("role")
+
+    if not user_id:
+        return None  # guest
+
+    return {
+        "user_id": user_id,
+        "role": role
+    }
