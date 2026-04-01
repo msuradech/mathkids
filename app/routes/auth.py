@@ -46,4 +46,4 @@ def login(
 @router.get("/logout")
 def logout(request: Request):
     request.session.clear()
-    return {"status": "logged out"}
+    return {"status": "ok"}

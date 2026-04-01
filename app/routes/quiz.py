@@ -9,8 +9,11 @@ router = APIRouter()
 templates = Jinja2Templates(directory="templates")
 
 @router.post("/quiz/record")
-def submit_quiz(req: QuizResult):
-    user_id = insert_quiz_result(
+def submit_quiz(req: QuizResult, request: Request):
+    user_id = request.session.get("user_id", 0)
+
+    insert_quiz_result(
+        user_id=user_id,
         quiz_level=req.quiz_level,
         total_questions=req.total_questions,
         score=req.score,

@@ -1,7 +1,7 @@
 import { startTimer, stopTimer } from "./timer.js";
 import { calculateScore, renderResults } from "./quiz.js";
 import { recordResult } from "./api.js";
-import { getQuizLevel } from "./utils.js";
+import { getQuizLevel, loadUser } from "./utils.js";
 
 function submitQuiz() {
     const btn = document.getElementById("submit-btn");
@@ -45,3 +45,45 @@ window.onload = function () {
     }
 
 };
+
+
+const logoutBtn = document.getElementById("logout-btn");
+if (logoutBtn) {
+    logoutBtn.addEventListener("click", async () => {
+        await fetch("/logout", { credentials: "include" });
+        window.location.reload();
+    });
+}
+
+
+if (document.getElementById("user-info")) {
+    loadUser();
+}
+
+const loginForm = document.getElementById("login-form");
+if(loginForm) {
+    loginForm.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        const username = document.getElementById("username").value;
+        const password = document.getElementById("password").value;
+
+        const formData = new FormData();
+        formData.append("username", username);
+        formData.append("password", password);
+
+        const res = await fetch("/login", {
+            method: "POST",
+            body: formData,
+            credentials: "include" // 🔥 สำคัญ (ใช้ session)
+        });
+
+        const data = await res.json();
+
+        if (data.status === "ok") {
+            window.location.href = "/"; // ไปหน้า home
+        } else {
+            document.getElementById("msg").innerText = data.msg;
+        }
+});
+}
