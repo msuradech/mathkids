@@ -1,4 +1,4 @@
-import { loadUser } from "../utils.js";
+import { loadUser } from "../utils/utils.js";
 
 export function initNavbar() {
     const userInfo = document.getElementById("user-info");

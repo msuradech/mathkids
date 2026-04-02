@@ -1,7 +1,5 @@
-import { startTimer, stopTimer } from "../timer.js";
-import { calculateScore, renderResults } from "../quiz.js";
-import { recordResult } from "../api.js";
-import { getQuizLevel } from "../utils.js";
+import { startTimer, stopTimer } from "../utils/timer.js";
+import { getQuizLevel, calculateScore, renderResults, recordResult } from "../utils/quiz.js";
 import { initNavbar } from "../common/common.js";
 
 initNavbar();
@@ -38,7 +36,7 @@ export function submitQuiz() {
         `Total: ${totalTime}s | Avg: ${avgTime}s/question`;
     
     recordResult({
-        quiz_level: getQuizLevel(),   // เดี๋ยวทำต่อด้านล่าง
+        quiz_level: getQuizLevel(),   
         total_questions: totalQuestions,
         score: correct,
         total_time_sec: totalTime
@@ -48,4 +46,3 @@ export function submitQuiz() {
 export function resetQuiz() {
     location.reload();
 }
-
