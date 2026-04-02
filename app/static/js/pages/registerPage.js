@@ -1,3 +1,7 @@
+import { initNavbar } from "../common/common.js";
+
+initNavbar();
+
 const form = document.getElementById("register-form");
 const message = document.getElementById("message");
 

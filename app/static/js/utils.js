@@ -9,7 +9,6 @@ export async function loadUser() {
     });
 
     const data = await res.json();
-
     const userDiv = document.getElementById("user-info");
     const logoutBtn = document.getElementById("logout-btn");
 

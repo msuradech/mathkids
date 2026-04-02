@@ -17,8 +17,8 @@
         </div>
     {% endfor %}
 
-    <button type="button" id="submit-btn" onclick="submitQuiz()">Submit</button>
-    <button type="button" onclick="resetQuiz()">Reset</button>
+    <button type="button" id="submit-btn">Submit</button>
+    <button type="button" id="reset-btn">Reset</button>
 </form>
 
 <p id="score"></p>
@@ -28,5 +28,5 @@
 <p>Select a level to start</p>
 {% endif %}
 
-<script type="module" src="/static/js/main.js"></script>
+<script type="module" src="/static/js/pages/quizPage.js"></script>
 {% endblock %}
