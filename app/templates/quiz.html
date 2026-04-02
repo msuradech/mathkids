@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>MathKids Quiz</h2>
+
+{% if questions %}
+<form id="quiz-form">
+    {% for q in questions %}
+        <div class="question">
+            <label>{{ loop.index }}) {{ q.question }} = </label>
+            <input 
+                type="text"
+                inputmode="numeric"
+                name="q{{ loop.index }}"
+                data-answer="{{ q.answer }}">
+            <span class="result"></span>
+        </div>
+    {% endfor %}
+
+    <button type="button" id="submit-btn" onclick="submitQuiz()">Submit</button>
+    <button type="button" onclick="resetQuiz()">Reset</button>
+</form>
+
+<p id="score"></p>
+<p id="timer">Time: 0s</p>
+<p id="result-time"></p>
+{% else %}
+<p>Select a level to start</p>
+{% endif %}
+
+<script type="module" src="/static/js/main.js"></script>
+{% endblock %}

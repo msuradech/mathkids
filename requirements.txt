@@ -2,3 +2,8 @@ fastapi
 uvicorn
 jinja2
 oracledb
+passlib[bcrypt]==1.7.4
+bcrypt==3.2.2
+pydantic[email]
+itsdangerous
+python-multipart

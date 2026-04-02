@@ -1,14 +1,8 @@
 from db.oci import get_connection
 
-def get_current_user_id():
-    # TODO: อนาคตเปลี่ยนเป็น decode JWT
-    return 100  # dummy user
-
-def insert_quiz_result(quiz_level, total_questions, score, total_time_sec):
+def insert_quiz_result(user_id, quiz_level, total_questions, score, total_time_sec):
     conn = get_connection()
     cursor = conn.cursor()
-
-    user_id = get_current_user_id()
 
     avg_time = (
         total_time_sec / total_questions

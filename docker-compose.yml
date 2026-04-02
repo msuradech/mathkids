@@ -9,6 +9,7 @@ services:
       OCI_USER: ${OCI_USER}
       OCI_PASSWORD: ${OCI_PASSWORD}
       WALLET_PASSWORD: ${WALLET_PASSWORD}
+      SECRET_KEY: ${SECRET_KEY}
     volumes:
       - ./app:/app
     labels:
