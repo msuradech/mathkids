@@ -25,16 +25,17 @@ def submit_quiz(req: QuizResult, request: Request):
         "user_id": user_id
     }
 
-@router.get("/quiz/01/{mode}", response_class=HTMLResponse)
-def quiz(request: Request, mode: str):
+@router.get("/quiz/{quiz_id}/{mode}", response_class=HTMLResponse)
+def quiz(request: Request, quiz_id: str, mode: str):
     total = get_mode_config(mode)
-    questions = generate_questions(total)
+    questions = generate_questions(total, quiz_id)
 
     return templates.TemplateResponse(
-    request=request,
-    name="quiz.html",
-    context={
-        "questions": questions,
-        "mode": mode
-    }
-)
+        request=request,
+        name="quiz.html",
+        context={
+            "questions": questions,
+            "mode": mode,
+            "quiz_id": quiz_id
+        }
+    )

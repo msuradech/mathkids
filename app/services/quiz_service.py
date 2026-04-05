@@ -25,7 +25,27 @@ def generate_lv01_question():
         "answer": answer
     }
 
-def generate_questions(n: int):
-    return [generate_lv01_question() for _ in range(n)]
+def generate_lv02_question():
+    a = random.randint(1, 12)
+    b = random.randint(1, 12)
 
+    answer = a * b
+
+    return {
+        "question": f"{a} x {b}",
+        "answer": answer
+    }
+
+QUIZ_GENERATORS = {
+    "01": generate_lv01_question,
+    "02": generate_lv02_question
+}
+
+def generate_questions(n: int, quiz_id: str):
+    generator = QUIZ_GENERATORS.get(quiz_id)
+
+    if not generator:
+        raise ValueError(f"Invalid quiz id: {quiz_id}")
+
+    return [generator() for _ in range(n)]
 
