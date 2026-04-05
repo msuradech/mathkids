@@ -4,7 +4,7 @@ def get_mode_config(mode: str):
     config = {
         "easy": 10,
         "normal": 20,
-        "hard": 50
+        "hard": 30
     }
     return config.get(mode, 10)
 
