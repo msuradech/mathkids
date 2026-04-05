@@ -36,9 +36,21 @@ def generate_lv02_question():
         "answer": answer
     }
 
+def generate_lv03_question():
+    answer = random.randint(1, 12)
+    b = random.randint(1, 12)
+
+    a = answer * b  # ทำให้หารลงตัวแน่นอน
+
+    return {
+        "question": f"{a} ÷ {b}",
+        "answer": answer
+    }
+
 QUIZ_GENERATORS = {
     "01": generate_lv01_question,
-    "02": generate_lv02_question
+    "02": generate_lv02_question,
+    "03": generate_lv03_question
 }
 
 def generate_questions(n: int, quiz_id: str):
