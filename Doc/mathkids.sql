@@ -6,8 +6,8 @@ CREATE TABLE users (
     username       VARCHAR2(50)   NOT NULL,
     password_hash  VARCHAR2(255)  NOT NULL,
     email          VARCHAR2(100)  NOT NULL,
-    role           VARCHAR2(20)   DEFAULT 'user',
-    account_status VARCHAR2(20)   DEFAULT 'active',
+    role           VARCHAR2(20)   DEFAULT 'USER',
+    account_status VARCHAR2(20)   DEFAULT 'ACTIVE',
     birth_date     DATE,
     created_at     TIMESTAMP      DEFAULT CURRENT_TIMESTAMP,
     updated_at     TIMESTAMP
