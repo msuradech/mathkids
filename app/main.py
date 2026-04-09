@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 from middleware.session import add_session_middleware
-from routes import pages, auth, quiz, utils
+from routes import pages, auth, quiz, score, utils
 
 
 def create_app():
@@ -15,6 +15,7 @@ def create_app():
     app.include_router(pages.router)
     app.include_router(auth.router)
     app.include_router(quiz.router)
+    app.include_router(score.router)
     app.include_router(utils.router)
 
     return app

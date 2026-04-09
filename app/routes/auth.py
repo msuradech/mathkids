@@ -18,7 +18,7 @@ def get_me(request: Request):
 
     return {
         "user": {
-            "id": user_id,
+            "user_id": user_id,
             "username": request.session.get("username"),
             "role": request.session.get("role")
         }
