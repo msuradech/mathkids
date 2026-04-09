@@ -8,10 +8,10 @@ const message = document.getElementById("message");
 form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
-    const username = document.getElementById("username").value;
+    const username = document.getElementById("username").value.toLowerCase();
     const password = document.getElementById("password").value;
     const confirmPassword = document.getElementById("confirm_password").value;
-    const email = document.getElementById("email").value;
+    const email = document.getElementById("email").value.toLowerCase();
     const birth_date = document.getElementById("birth_date").value;
 
     if (password !== confirmPassword) {
@@ -48,7 +48,11 @@ form.addEventListener("submit", async (e) => {
             }, 1000);
 
         } else {
-            message.innerText = data.detail || "Register failed";
+            if (Array.isArray(data.detail)) {
+                message.innerText = data.detail[0].msg;
+            } else {
+                message.innerText = data.detail || "Register failed";
+            }
             message.style.color = "red";
         }
 
