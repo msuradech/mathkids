@@ -2,6 +2,8 @@
     box-sizing: border-box;
 }
 
+/* ######## Element ######## */
+
 body {
     margin: 0;
     display: flex;
@@ -9,6 +11,38 @@ body {
     background: #f5f7fb;
     color: #333;
 }
+
+.content {
+    flex: 1;
+    padding: 30px;
+}
+
+h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+form {
+    max-width: 600px;
+}
+
+button {
+    margin-top: 15px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    background: #6366f1;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+button:hover {
+    background: #4f46e5;
+}
+
+/* ######## Sidebar ######## */
 
 .sidebar {
     width: 200px;
@@ -23,7 +57,7 @@ body {
 .sidebar h3 {
     margin: 0 0 8px 0;
     font-size: 13px;
-    color: #94a3b8;   /* เทาอ่อน (ไม่แย่งซีน) */
+    color: #94a3b8;
     font-weight: 500;
 }
 
@@ -40,7 +74,7 @@ body {
 .sidebar a {
     text-decoration: none;
     font-size: 12px;
-    color: #e2e8f0;   /* ขาวนวล อ่านง่าย */
+    color: #e2e8f0;
     padding: 4px 8px;
     border-radius: 6px;
     transition: all 0.2s ease;
@@ -50,11 +84,6 @@ body {
 .sidebar a:hover {
     background-color: #334155;
     color: #ffffff;
-}
-
-.content {
-    flex: 1;
-    padding: 30px;
 }
 
 @media (max-width: 768px) {
@@ -88,23 +117,18 @@ body {
         border-radius: 6px;
     }
 
-
     .content {
         padding: 10px;
     }
 }
 
+/* ######## Login Page ######## */
 
-h2 {
-    margin-top: 0;
-    margin-bottom: 20px;
+#login-form {
+    max-width: 100px;
 }
 
-form {
-    max-width: 600px;
-}
-
-/* ######## Register page ######## */
+/* ######## Register Page ######## */
 
 #register-form {
     max-width: 320px;
@@ -153,7 +177,7 @@ form {
     background: #0ea5e9;
 }
 
-/* ######## Quiz page ######## */
+/* ######## Quiz Page ######## */
 
 .question {
     background: white;
@@ -198,22 +222,6 @@ form {
 
 .result.wrong {
     color: #ef4444;
-}
-
-button {
-    margin-top: 15px;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 8px;
-    background: #6366f1;
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.2s;
-}
-
-button:hover {
-    background: #4f46e5;
 }
 
 #score {
