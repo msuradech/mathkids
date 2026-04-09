@@ -104,6 +104,8 @@ form {
     max-width: 600px;
 }
 
+/* ######## Quiz page ######## */
+
 .question {
     background: white;
     padding: 15px 20px;
@@ -177,6 +179,8 @@ button:hover {
     cursor: not-allowed;
     opacity: 0.7;
 }
+
+/* ######## Register page ######## */
 
 #register-form {
     max-width: 320px;
