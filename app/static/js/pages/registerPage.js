@@ -8,10 +8,10 @@ const message = document.getElementById("message");
 form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
-    const username = document.getElementById("username").value.toLowerCase();
-    const password = document.getElementById("password").value;
-    const confirmPassword = document.getElementById("confirm_password").value;
-    const email = document.getElementById("email").value.toLowerCase();
+    const username = document.getElementById("username").value.trim().toLowerCase();
+    const password = document.getElementById("password").value.trim();
+    const confirmPassword = document.getElementById("confirm_password").value.trim();
+    const email = document.getElementById("email").value.trim().toLowerCase();
     const birth_date = document.getElementById("birth_date").value;
 
     if (password !== confirmPassword) {
