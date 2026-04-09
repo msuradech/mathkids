@@ -7,8 +7,8 @@ if(loginForm) {
     loginForm.addEventListener("submit", async (e) => {
         e.preventDefault();
 
-        const username = document.getElementById("username").value;
-        const password = document.getElementById("password").value;
+        const username = document.getElementById("username").value.trim().toLowerCase();
+        const password = document.getElementById("password").value.trim();
 
         const formData = new FormData();
         formData.append("username", username);
