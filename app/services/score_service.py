@@ -5,7 +5,7 @@ def get_score_daily_service(user_id: int):
     cursor = conn.cursor()
 
     query = """
-        SELECT USER_ID, SCORE, SEC, AVG_SCORE
+        SELECT USER_ID, SCORE, ACCURACY_PCT, SEC, AVG_SCORE
         FROM mathkids.v_score_daily_by_user
         WHERE user_id = :user_id
     """
@@ -27,7 +27,7 @@ def get_score_monthly_service(user_id: int):
     cursor = conn.cursor()
 
     query = """
-        SELECT USER_ID, SCORE, SEC, AVG_SCORE
+        SELECT USER_ID, SCORE, ACCURACY_PCT, SEC, AVG_SCORE
         FROM mathkids.v_score_monthly_by_user
         WHERE user_id = :user_id
     """

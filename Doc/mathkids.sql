@@ -54,9 +54,10 @@ order by a.CREATED_AT;
 create or replace view mathkids.v_score_daily_by_user as
 select
 	a.USER_ID,
-	sum(a.SCORE) SCORE,
-	sum(a.TOTAL_TIME_SEC) SEC,
-	sum(a.TOTAL_TIME_SEC)/sum(a.SCORE) AVG_SCORE
+	sum(a.SCORE) as SCORE,
+	(sum(a.SCORE) / sum(a.TOTAL_QUESTIONS)) * 100 AS ACCURACY_PCT,
+	sum(a.TOTAL_TIME_SEC) as SEC,
+	sum(a.TOTAL_TIME_SEC)/sum(a.SCORE) as AVG_SCORE
 from mathkids.quiz_results a
 where a.CREATED_AT + 7/24 > TRUNC(SYSDATE) + 7/24
 group by a.USER_ID;
@@ -64,9 +65,10 @@ group by a.USER_ID;
 create or replace view mathkids.v_score_monthly_by_user as
 select
 	a.USER_ID,
-	sum(a.SCORE) SCORE,
-	sum(a.TOTAL_TIME_SEC) SEC, 
-	sum(a.TOTAL_TIME_SEC)/sum(a.SCORE) AVG_SCORE
+	sum(a.SCORE) as SCORE,
+	(sum(a.SCORE) / sum(a.TOTAL_QUESTIONS)) * 100 AS ACCURACY_PCT,
+	sum(a.TOTAL_TIME_SEC) as SEC, 
+	sum(a.TOTAL_TIME_SEC)/sum(a.SCORE) as AVG_SCORE
 from mathkids.quiz_results a
 where a.CREATED_AT + 7/24 > TRUNC(SYSDATE, 'MM') + 7/24
 group by a.USER_ID;
