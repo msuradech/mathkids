@@ -7,6 +7,9 @@ pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 def hash_password(password: str):
     return pwd_context.hash(password)
 
+def verify_password(plain_password: str, hashed_password: str):
+    return pwd_context.verify(plain_password, hashed_password)
+
 def register_user(data, conn):
 
     # 1. check username
@@ -96,6 +99,51 @@ def login_user(conn, username: str, password: str):
         "username": db_username,
         "role": role
     }
+
+def change_user_password(conn, username: str, current_password: str, new_password: str):
+
+    cursor = conn.cursor()
+
+    # get current hash
+    cursor.execute("""
+        SELECT password_hash
+        FROM mathkids.users
+        WHERE username = :username
+    """, {"username": username})
+
+    row = cursor.fetchone()
+
+    if not row:
+        raise HTTPException(status_code=404, detail="User not found")
+
+    stored_hash = row[0]
+
+    # verify current password
+    if not verify_password(current_password, stored_hash):
+        raise HTTPException(status_code=400, detail="Current password is incorrect")
+
+    # prevent reuse
+    if verify_password(new_password, stored_hash):
+        raise HTTPException(status_code=400, detail="New password must be different")
+
+    # validate
+    if len(new_password) < 6:
+        raise HTTPException(status_code=400, detail="Password too short")
+
+    # hash new password
+    new_hash = hash_password(new_password)
+
+    # update
+    cursor.execute("""
+        UPDATE mathkids.users
+        SET password_hash = :new_hash
+        WHERE username = :username
+    """, {
+        "new_hash": new_hash,
+        "username": username
+    })
+
+    conn.commit()
 
 def get_current_user(request: Request):
     user_id = request.session.get("user_id")

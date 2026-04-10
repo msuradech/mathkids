@@ -6,3 +6,7 @@ class RegisterRequest(BaseModel):
     password: str
     email: EmailStr
     birth_date: date
+
+class ChangePasswordRequest(BaseModel):
+    current_password: str
+    new_password: str
