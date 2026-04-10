@@ -1,6 +1,6 @@
-from fastapi import APIRouter, Depends, Request, Form
-from schemas.user import RegisterRequest
-from services.auth_service import register_user, login_user
+from fastapi import APIRouter, Depends, Request, Form, HTTPException
+from schemas.user import RegisterRequest, ChangePasswordRequest
+from services.auth_service import register_user, login_user, change_user_password
 from db.oci import get_connection
 
 router = APIRouter()
@@ -47,3 +47,21 @@ def login(
 def logout(request: Request):
     request.session.clear()
     return {"status": "ok"}
+
+@router.post("/change-password")
+async def change_password(req: Request, body: ChangePasswordRequest):
+
+    username = req.session.get("username")
+    if not username:
+        raise HTTPException(status_code=401, detail="Not logged in")
+
+    conn = get_connection()
+
+    change_user_password(
+        conn=conn,
+        username=username,
+        current_password=body.current_password,
+        new_password=body.new_password
+    )
+
+    return {"message": "Password updated successfully"}
