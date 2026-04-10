@@ -18,19 +18,17 @@ export async function loadUser() {
             const s = monthlyScoreData.data[0];
 
             const score = s.score;
+            const accuracy_pct = s.accuracy_pct;
             const minutes = (s.sec / 60).toFixed(2);
             const avg = Number(s.avg_score).toFixed(2);
 
             monthlyScoreText = `
-                <br>
-                <br>
-                <u>Monthly Score</u>
-                <br>
-                Score: ${score}
-                <br>
-                Time: ${minutes} min
-                <br>
-                Avg: ${avg}
+                <div class="score-card monthly">
+                    <div class="score-title">Monthly Score</div>
+                    <div class="score-item">Score: <span>${score} <small>(${accuracy_pct.toFixed(2)}%)</small></span></div>
+                    <div class="score-item">Time: <span>${minutes} min</span></div>
+                    <div class="score-item">Avg: <span>${avg}</span></div>
+                </div>
             `;
         }
 
@@ -43,26 +41,28 @@ export async function loadUser() {
             const s = dailyScoreData.data[0];
 
             const score = s.score;
+            const accuracy_pct = s.accuracy_pct;
             const minutes = (s.sec / 60).toFixed(2);
             const avg = Number(s.avg_score).toFixed(2);
 
             dailyScoreText = `
-                <br>
-                <br>
-                <u>Daily Score</u>
-                <br>
-                Score: ${score}
-                <br>
-                Time: ${minutes} min
-                <br>
-                Avg: ${avg}
+                <div class="score-card daily">
+                    <div class="score-title">Daily Score</div>
+                    <div class="score-item">Score: <span>${score} <small>(${accuracy_pct.toFixed(2)}%)</small></span></div>
+                    <div class="score-item">Time: <span>${minutes} min</span></div>
+                    <div class="score-item">Avg: <span>${avg}</span></div>
+                </div>
             `;
         }
 
         userDiv.innerHTML = `
-            Logged in as: ${data.user.username}
-            ${monthlyScoreText}
-            ${dailyScoreText}
+            <div class="user-box">
+                <div class="username">👤 ${data.user.username}</div>
+                <div class="score-container">
+                    ${monthlyScoreText}
+                    ${dailyScoreText}
+                </div>
+            </div>
         `;
 
         logoutBtn.style.display = "block";
