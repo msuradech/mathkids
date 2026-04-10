@@ -45,7 +45,7 @@ button:hover {
 /* ######## Sidebar ######## */
 
 .sidebar {
-    width: 200px;
+    width: 210px;
     background-color: #1e293b;
     color: white;
     padding: 10px;
@@ -120,6 +120,70 @@ button:hover {
     .content {
         padding: 10px;
     }
+}
+
+/* ######## Score Card ######## */
+
+.user-box {
+    background: #0f172a;
+    color: #e2e8f0;
+    padding: 16px;
+    border-radius: 12px;
+    width: fit-content;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+}
+
+.username {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 12px;
+}
+
+.score-container {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.score-card {
+    background: #1e293b;
+    padding: 14px;
+    border-radius: 10px;
+    min-width: 160px;
+    transition: 0.2s;
+    border: 1px solid transparent;
+}
+
+.score-card:hover {
+    transform: translateY(-3px);
+    border: 1px solid #38bdf8;
+}
+
+.score-title {
+    font-weight: bold;
+    margin-bottom: 8px;
+    font-size: 15px;
+    color: #38bdf8;
+}
+
+.score-item {
+    font-size: 14px;
+    margin: 4px 0;
+}
+
+.score-item span {
+    font-weight: bold;
+    color: #facc15;
+}
+
+/* แยกสี Daily / Monthly */
+.score-card.daily {
+    border-left: 4px solid #22c55e;
+}
+
+.score-card.monthly {
+    border-left: 4px solid #3b82f6;
 }
 
 /* ######## Login Page ######## */
