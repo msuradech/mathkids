@@ -21,6 +21,14 @@ def register_page(request: Request):
         context={}
     )
 
+@router.get("/change-password", response_class=HTMLResponse)
+def register_page(request: Request):
+    return templates.TemplateResponse(
+        request=request,
+        name="change-password.html",
+        context={}
+    )
+
 @router.get("/quiz", response_class=HTMLResponse)
 def register_page(request: Request):
     return templates.TemplateResponse(
