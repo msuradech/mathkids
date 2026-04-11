@@ -1,0 +1,59 @@
+/* ######## Quiz Page ######## */
+
+.question {
+    background: white;
+    padding: 15px 20px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.question label {
+    flex: 1;
+    font-weight: 500;
+}
+
+.quiz-input {
+    width: 80px;
+    padding: 6px 8px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    outline: none;
+    transition: 0.2s;
+}
+
+.quiz-input:focus {
+    border-color: #6366f1;
+    box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
+}
+
+.result {
+    min-width: 40px;
+    font-size: 18px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.result.correct {
+    color: #22c55e;
+}
+
+.result.wrong {
+    color: #ef4444;
+}
+
+#score {
+    margin-top: 15px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+#submit-btn:disabled {
+    background-color: gray;
+    color: white;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
