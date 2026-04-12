@@ -1,0 +1,109 @@
+/* ######## Login Page ######## */
+
+#login-form {
+    max-width: 100px;
+}
+
+/* ######## Register Page ######## */
+
+#register-form {
+    max-width: 320px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #1e293b;
+    border-radius: 10px;
+    color: white;
+}
+
+#register-form div {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+#register-form label {
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+#register-form input {
+    padding: 8px;
+    border-radius: 6px;
+    border: none;
+    outline: none;
+    font-size: 14px;
+}
+
+#register-form input:focus {
+    box-shadow: 0 0 0 2px #38bdf8;
+}
+
+#register-form button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
+    background: #38bdf8;
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#register-form button:hover {
+    background: #0ea5e9;
+}
+
+/* ######## Change Password Page ######## */
+
+#change-password-form {
+    max-width: 360px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #1e293b;
+    border-radius: 12px;
+    border: 1px solid #334155;
+}
+
+#change-password-form h2 {
+    margin-bottom: 16px;
+    font-size: 18px;
+    color: #f1f5f9;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 14px;
+}
+
+.form-group label {
+    font-size: 13px;
+    margin-bottom: 5px;
+    color: #94a3b8;
+}
+
+.form-group input {
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #334155;
+    background: #0f172a;
+    color: #e2e8f0;
+}
+
+.form-group input:focus {
+    border-color: #6366f1;
+    outline: none;
+}
+
+#msg {
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+#msg.success {
+    color: #22c55e;
+}
+
+#msg.error {
+    color: #ef4444;
+}

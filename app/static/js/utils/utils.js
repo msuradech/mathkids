@@ -25,7 +25,8 @@ export async function loadUser() {
             monthlyScoreText = `
                 <div class="score-card monthly">
                     <div class="score-title">Monthly Score</div>
-                    <div class="score-item">Score: <span>${score} <small>(${accuracy_pct.toFixed(2)}%)</small></span></div>
+                    <div class="score-item">Score: <span>${score}</span></div>
+                    <div class="score-item">Accu.: <span>${accuracy_pct.toFixed(2)}%</span></div>
                     <div class="score-item">Time: <span>${minutes} min</span></div>
                     <div class="score-item">Avg: <span>${avg}</span></div>
                 </div>
@@ -48,7 +49,8 @@ export async function loadUser() {
             dailyScoreText = `
                 <div class="score-card daily">
                     <div class="score-title">Daily Score</div>
-                    <div class="score-item">Score: <span>${score} <small>(${accuracy_pct.toFixed(2)}%)</small></span></div>
+                    <div class="score-item">Score: <span>${score}</span></div>
+                    <div class="score-item">Accu.: <span>${accuracy_pct.toFixed(2)}%</span></div>
                     <div class="score-item">Time: <span>${minutes} min</span></div>
                     <div class="score-item">Avg: <span>${avg}</span></div>
                 </div>
@@ -69,7 +71,8 @@ export async function loadUser() {
     } else {
         userDiv.innerHTML = `
             Guest |
-            <a href="/login">Login</a>
+            <a href="/login">Login</a> |
+            <a href="/register">Register</a>
         `;
     }
 }

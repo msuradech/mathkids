@@ -12,9 +12,15 @@ window.onload = function () {
     }
 };
 
-document.getElementById("submit-btn").addEventListener("click", submitQuiz);
-document.getElementById("reset-btn").addEventListener("click", resetQuiz);
+const submitBtn = document.getElementById("submit-btn");
+if(submitBtn) {
+    submitBtn.addEventListener("click", submitQuiz);
+}
 
+const resetBtn = document.getElementById("reset-btn");
+if(resetBtn) {
+    resetBtn.addEventListener("click", resetQuiz);
+}
 
 export function submitQuiz() {
     const btn = document.getElementById("submit-btn");
