@@ -1,7 +1,53 @@
 /* ######## Login Page ######## */
 
 #login-form {
-    max-width: 100px;
+    width: 280px;
+    margin: 80px auto;
+    padding: 25px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* input */
+#login-form input {
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid #cbd5e1;
+    font-size: 14px;
+    outline: none;
+    transition: 0.2s;
+}
+
+/* focus */
+#login-form input:focus {
+    border-color: #6366f1;
+    box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
+}
+
+/* button */
+#login-form button {
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    background: #6366f1;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+/* hover */
+#login-form button:hover {
+    background: #4f46e5;
+}
+
+/* active */
+#login-form button:active {
+    transform: scale(0.98);
 }
 
 /* ######## Register Page ######## */
