@@ -72,3 +72,18 @@ select
 from mathkids.quiz_results a
 where a.CREATED_AT + 7/24 > TRUNC(SYSDATE, 'MM') + 7/24
 group by a.USER_ID;
+
+create or replace view mathkids.v_result_history as
+select 
+	a.CREATED_AT + 7/24 CREATED_AT7,
+	b.user_id, 
+	b.username, 
+	a.QUIZ_LEVEL, 
+	a.TOTAL_QUESTIONS, 
+	a.SCORE,
+	a.TOTAL_TIME_SEC SEC, 
+	a.AVG_TIME_SEC AVG_SEC
+from mathkids.quiz_results a
+left join mathkids.users b
+on a.user_id = b.user_id
+order by a.CREATED_AT;
