@@ -1,5 +1,5 @@
 from fastapi import APIRouter, Request
-from fastapi.responses import HTMLResponse
+from fastapi.responses import HTMLResponse, RedirectResponse
 from fastapi.templating import Jinja2Templates
 
 router = APIRouter()
@@ -42,5 +42,18 @@ def register_page(request: Request):
     return templates.TemplateResponse(
         request=request,
         name="register.html",
+        context={}
+    )
+
+@router.get("/result-history", response_class=HTMLResponse)
+def result_hitsory_page(request: Request):
+    role = request.session.get("role")
+
+    if role != "ADMIN":
+        return RedirectResponse(url="/", status_code=303)  # ไป index.html
+
+    return templates.TemplateResponse(
+        request=request,
+        name="result-history.html",
         context={}
     )
