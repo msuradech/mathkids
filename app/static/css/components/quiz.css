@@ -1,5 +1,29 @@
 /* ######## Quiz Page ######## */
 
+.quiz-level ul {
+    display: flex;
+    gap: 10px;        /* ระยะห่างระหว่าง Easy / Normal / Hard */
+    padding: 0;
+}
+
+.quiz-level ul li {
+    list-style: none; /* เอาจุดหน้าลิสต์ออก */
+}
+
+.quiz-level ul li a {
+    display: block;
+    padding: 6px 12px;
+    background-color: #e2e8f0;
+    border-radius: 6px;
+    text-decoration: none;
+    color: #1e293b;
+    font-size: 13px;
+}
+
+.quiz-level ul li a:hover {
+    background-color: #cbd5f5;
+}
+
 .question {
     background: white;
     padding: 15px 20px;
