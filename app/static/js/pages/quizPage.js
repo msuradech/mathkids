@@ -47,6 +47,7 @@ export function submitQuiz() {
         score: correct,
         total_time_sec: totalTime
     });
+    console.log(getQuizLevel());
 }
 
 export function resetQuiz() {
