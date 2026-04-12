@@ -1,9 +1,21 @@
 /* Container */
 #result-container {
     margin-top: 20px;
+    margin-left: -20px;
 }
 
-
+/* Dropdown */
+#username {
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: 1px solid #cbd5e1;
+    background-color: #ffffff;
+    font-size: 14px;
+    color: #1e293b;
+    outline: none;
+    min-width: 220px;
+    transition: all 0.2s ease;
+}
 
 /* Focus effect */
 #username:focus {
@@ -38,4 +50,10 @@ table tr:hover {
 .today-row {
     background-color: #dcfce7 !important; /* เขียวอ่อน */
     font-weight: 500;
+}
+
+.col-date {
+    white-space: nowrap;
+    font-size: 11px;
+    color: #475569;
 }

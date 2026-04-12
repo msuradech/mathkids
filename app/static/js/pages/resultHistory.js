@@ -13,7 +13,7 @@ if (dropdown) {
         const res = await fetch(`/result-history/${username}`);
         const data = await res.json();
 
-        console.log(data);
+        /*console.log(data);*/
     });
 }
 
@@ -60,7 +60,7 @@ function renderTable(rows) {
 
         html += `
             <tr class="${isToday ? 'today-row' : ''}">
-                <td>${r.created_at}</td>
+                <td class="col-date">${formatDate(r.created_at)}</td>
                 <td>${r.username}</td>
                 <td>${r.quiz_level}</td>
                 <td>${r.total_questions}</td>
@@ -73,4 +73,15 @@ function renderTable(rows) {
 
     html += "</table>";
     container.innerHTML = html;
+}
+
+function formatDate(dateStr) {
+    const d = new Date(dateStr);
+
+    return d.toLocaleString("en-GB", {
+        day: "2-digit",
+        month: "short",
+        hour: "2-digit",
+        minute: "2-digit"
+    });
 }
