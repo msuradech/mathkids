@@ -23,7 +23,7 @@ def generate_lv01_question(mode: str):
             b = random.randint(1, 100)
 
         case _:
-            raise ValueError(f"Invalid mode: {mode}")   
+            raise ValueError(f"Invalid mode: {mode}")
     
     op = random.choice(["+", "-"])
 
@@ -40,8 +40,21 @@ def generate_lv01_question(mode: str):
     }
 
 def generate_lv02_question(mode: str):
-    a = random.randint(1, 12)
-    b = random.randint(1, 12)
+    match mode:
+        case "01":
+            a = random.randint(1, 12)
+            b = random.randint(1, 12)
+
+        case "02":
+            a = random.randint(11, 100)
+            b = random.randint(2, 12)
+
+        case "03":
+            a = random.randint(11, 100)
+            b = random.randint(11, 100)
+
+        case _:
+            raise ValueError(f"Invalid mode: {mode}")
 
     answer = a * b
 
@@ -51,10 +64,23 @@ def generate_lv02_question(mode: str):
     }
 
 def generate_lv03_question(mode: str):
-    answer = random.randint(1, 12)
-    b = random.randint(1, 12)
+    match mode:
+        case "01":
+            answer = random.randint(1, 12)
+            b = random.randint(1, 12)
 
-    a = answer * b  # ทำให้หารลงตัวแน่นอน
+        case "02":
+            answer = random.randint(11, 50)
+            b = random.randint(1, 12)
+
+        case "03":
+            answer = random.randint(11, 50)
+            b = random.randint(13, 30)
+
+        case _:
+            raise ValueError(f"Invalid mode: {mode}")
+
+    a = answer * b
 
     return {
         "question": f"{a} ÷ {b}",
