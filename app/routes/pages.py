@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Request
 from fastapi.responses import HTMLResponse, RedirectResponse
 from fastapi.templating import Jinja2Templates
-from services.db_service import get_all_user
+from services.db_service import get_all_user, get_result_history_by_user
 
 router = APIRouter()
 templates = Jinja2Templates(directory="templates")
@@ -62,3 +62,8 @@ def result_hitsory_page(request: Request):
             "users": users
         }
     )
+
+@router.get("/result-history/{user_id}")
+def result_history_api(user_id: int):
+    data = get_result_history_by_user(user_id)
+    return {"data": data}

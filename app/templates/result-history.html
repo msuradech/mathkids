@@ -1,16 +1,18 @@
 {% extends "base.html" %}
 
 {% block content %}
-Hist
+<div style="display: flex; align-items: center; gap: 10px;">
+    <label for="username" style="font-size:14px; color:#334155;">Select User:</label>
 
-<select name="username" id="username">
-    <option value="">-- Select User --</option>
-    {% for u in users %}
-        <option value="{{ u[0] }}">{{ u[1] }}</option>
-    {% endfor %}
-</select>
+    <select name="username" id="username">
+        <option value="">-- Select User --</option>
+        {% for u in users %}
+            <option value="{{ u[0] }}">{{ u[1] }}</option>
+        {% endfor %}
+    </select>
+</div>
 
-<p id="msg"></p>
+<div id="result-container"></div>
 
 <script type="module" src="/static/js/pages/resultHistory.js"></script>
 {% endblock %}

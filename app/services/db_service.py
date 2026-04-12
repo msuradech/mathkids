@@ -38,3 +38,35 @@ def get_all_user():
     cursor = conn.cursor()
     rows = cursor.execute("SELECT user_id, username FROM mathkids.users order by user_id").fetchall()
     return rows
+
+def get_result_history_by_user(user_id):
+    conn = get_connection()
+    cursor = conn.cursor()
+
+    rows = cursor.execute("""
+    SELECT 
+        CREATED_AT7,
+        USERNAME,
+        QUIZ_LEVEL,
+        TOTAL_QUESTIONS,
+        SCORE,
+        SEC,
+        AVG_SEC
+    FROM mathkids.v_result_history
+    WHERE USER_ID = :user_id
+    ORDER BY CREATED_AT7 DESC
+""", {"user_id": user_id}).fetchall()
+
+    data = []
+    for r in rows:
+        data.append({
+            "created_at": str(r[0]),
+            "username": r[1],
+            "quiz_level": r[2],
+            "total_questions": r[3],
+            "score": r[4],
+            "sec": r[5],
+            "avg_sec": r[6],
+        })
+
+    return data
