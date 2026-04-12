@@ -32,3 +32,10 @@ def insert_quiz_result(user_id, quiz_level, total_questions, score, total_time_s
     conn.commit()
 
     return user_id
+
+def get_all_user():
+    conn = get_connection()
+    cursor = conn.cursor()
+    rows = cursor.execute("SELECT username FROM mathkids.users").fetchall()
+    users = [r[0] for r in rows]
+    return users

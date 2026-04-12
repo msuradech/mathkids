@@ -1,6 +1,7 @@
 from fastapi import APIRouter, Request
 from fastapi.responses import HTMLResponse, RedirectResponse
 from fastapi.templating import Jinja2Templates
+from services.db_service import get_all_user
 
 router = APIRouter()
 templates = Jinja2Templates(directory="templates")
@@ -52,8 +53,12 @@ def result_hitsory_page(request: Request):
     if role != "ADMIN":
         return RedirectResponse(url="/", status_code=303)  # ไป index.html
 
+    users = get_all_user()
+
     return templates.TemplateResponse(
         request=request,
         name="result-history.html",
-        context={}
+        context={
+            "users": users
+        }
     )

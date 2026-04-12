@@ -3,7 +3,14 @@
 {% block content %}
 Hist
 
+<select name="username" id="username">
+    <option value="">-- Select User --</option>
+    {% for u in users %}
+        <option value="{{ u }}">{{ u }}</option>
+    {% endfor %}
+</select>
+
 <p id="msg"></p>
 
-<script type="module" src="/static/js/pages/loginPage.js"></script>
+<script type="module" src="/static/js/pages/resultHistory.js"></script>
 {% endblock %}
