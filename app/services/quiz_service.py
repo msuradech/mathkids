@@ -1,6 +1,6 @@
 import random
 
-def get_mode_config(mode: str):
+def get_num_quiz(mode: str):
     config = {
         "01": 10,
         "02": 20,
@@ -8,15 +8,29 @@ def get_mode_config(mode: str):
     }
     return config.get(mode, 10)
 
-def generate_lv01_question():
-    a = random.randint(0, 9)
-    b = random.randint(0, 9)
+def generate_lv01_question(mode: str):
+    match mode:
+        case "01":
+            a = random.randint(0, 10)
+            b = random.randint(0, 10)
+
+        case "02":
+            a = random.randint(0, 10)
+            b = random.randint(0, 10)
+
+        case "03":
+            a = random.randint(1, 100)
+            b = random.randint(1, 100)
+
+        case _:
+            raise ValueError(f"Invalid mode: {mode}")   
+    
     op = random.choice(["+", "-"])
 
     if op == "+":
         answer = a + b
     else:
-        if a < b:
+        if a < b and mode == "01":
             a, b = b, a
         answer = a - b
 
@@ -25,7 +39,7 @@ def generate_lv01_question():
         "answer": answer
     }
 
-def generate_lv02_question():
+def generate_lv02_question(mode: str):
     a = random.randint(1, 12)
     b = random.randint(1, 12)
 
@@ -36,7 +50,7 @@ def generate_lv02_question():
         "answer": answer
     }
 
-def generate_lv03_question():
+def generate_lv03_question(mode: str):
     answer = random.randint(1, 12)
     b = random.randint(1, 12)
 
@@ -53,11 +67,11 @@ QUIZ_GENERATORS = {
     "03": generate_lv03_question
 }
 
-def generate_questions(n: int, quiz_id: str):
+def generate_questions(n: int, quiz_id: str, mode: str):
     generator = QUIZ_GENERATORS.get(quiz_id)
 
     if not generator:
         raise ValueError(f"Invalid quiz id: {quiz_id}")
 
-    return [generator() for _ in range(n)]
+    return [generator(mode) for _ in range(n)]
 

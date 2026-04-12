@@ -2,7 +2,7 @@ from fastapi import APIRouter, Request
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 from services.db_service import insert_quiz_result
-from services.quiz_service import generate_questions, get_mode_config
+from services.quiz_service import generate_questions, get_num_quiz
 from schemas.quiz import QuizResult
 
 router = APIRouter()
@@ -27,8 +27,8 @@ def submit_quiz(req: QuizResult, request: Request):
 
 @router.get("/quiz/{quiz_id}/{mode}", response_class=HTMLResponse)
 def quiz(request: Request, quiz_id: str, mode: str):
-    total = get_mode_config(mode)
-    questions = generate_questions(total, quiz_id)
+    total = get_num_quiz(mode)
+    questions = generate_questions(total, quiz_id, mode)
 
     return templates.TemplateResponse(
         request=request,
