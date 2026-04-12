@@ -2,6 +2,7 @@
 @import url("components/sidebar.css");
 @import url("components/quiz.css");
 @import url("components/auth.css");
+@import url("components/result-history.css");
 
 * {
     box-sizing: border-box;

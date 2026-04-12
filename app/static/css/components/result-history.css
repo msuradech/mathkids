@@ -1,0 +1,59 @@
+/* Container */
+#result-container {
+    margin-top: 20px;
+    margin-left: -20px;
+}
+
+/* Dropdown */
+#username {
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: 1px solid #cbd5e1;
+    background-color: #ffffff;
+    font-size: 14px;
+    color: #1e293b;
+    outline: none;
+    min-width: 220px;
+    transition: all 0.2s ease;
+}
+
+/* Focus effect */
+#username:focus {
+    border-color: #6366f1;
+    box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
+}
+
+/* Table */
+table {
+    font-size: 11px;
+}
+
+table th, table td {
+    padding: 4px 8px;
+}
+
+/* Zebra */
+table tr:nth-child(even) {
+    background-color: #f8fafc;
+}
+
+/* Hover */
+table tr:hover {
+    background-color: #e0e7ff;
+}
+
+/* ทำให้มันดูไม่โล่งเกิน */
+#result-container {
+    margin-top: 12px;
+}
+
+.today-row {
+    background-color: #dcfce7 !important; /* เขียวอ่อน */
+    font-weight: 500;
+}
+
+.col-date {
+    white-space: nowrap;
+    font-size: 11px;
+    color: #475569;
+}

@@ -1,6 +1,6 @@
 export function getQuizLevel() {
     const pathParts = window.location.pathname.split("/");
-    return pathParts[2]; // index 2 = "01"
+    return pathParts[2] + pathParts[3]; // index 2 = "01"
 }
 
 export function calculateScore(inputs) {
