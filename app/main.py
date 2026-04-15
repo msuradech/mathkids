@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 from middleware.session import add_session_middleware
 from routes import pages, auth, quiz, score, utils
-
+from prometheus_fastapi_instrumentator import Instrumentator
 
 def create_app():
     app = FastAPI()
@@ -22,3 +22,4 @@ def create_app():
 
 
 app = create_app()
+Instrumentator().instrument(app).expose(app)
