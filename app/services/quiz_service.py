@@ -87,10 +87,33 @@ def generate_lv03_question(mode: str):
         "answer": answer
     }
 
+def generate_lv04_question(mode: str):
+    match mode:
+        case "01":
+            a = random.randint(1, 10)
+
+            if a in (1, 10):
+                b = random.randint(0, 10)
+            elif a > 5:
+                b = random.randint(0, 2)
+            else:
+                b = random.randint(1, 4)
+
+            answer = a ** b
+
+        case _:
+            raise ValueError(f"Invalid mode: {mode}")
+
+    return {
+        "question": f"{a}^{b}",
+        "answer": answer
+    }
+
 QUIZ_GENERATORS = {
     "01": generate_lv01_question,
     "02": generate_lv02_question,
-    "03": generate_lv03_question
+    "03": generate_lv03_question,
+    "04": generate_lv04_question
 }
 
 def generate_questions(n: int, quiz_id: str, mode: str):

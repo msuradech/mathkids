@@ -87,3 +87,13 @@ from mathkids.quiz_results a
 left join mathkids.users b
 on a.user_id = b.user_id
 order by a.CREATED_AT;
+
+#########################################################
+# Cleansing (QUIZ_LEVEL)
+
+update mathkids.quiz_results set QUIZ_LEVEL='0101' where quiz_level='01' and total_questions=10;
+update mathkids.quiz_results set QUIZ_LEVEL='0201' where quiz_level='02' and total_questions=10;
+update mathkids.quiz_results set QUIZ_LEVEL='0301' where quiz_level='03' and total_questions=10;
+
+update mathkids.quiz_results set QUIZ_LEVEL='0102' where quiz_level='01' and total_questions=20;
+update mathkids.quiz_results set QUIZ_LEVEL='0103' where quiz_level='01' and total_questions=30;
