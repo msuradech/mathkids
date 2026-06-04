@@ -90,6 +90,12 @@ def generate_lv03_question(mode: str):
 def generate_lv04_question(mode: str):
     match mode:
         case "01":
+            a = random.choice([2, 10])
+            b = random.randint(0, 10)
+
+            answer = a ** b
+
+        case "02":
             a = random.randint(1, 10)
 
             if a in (1, 10):
